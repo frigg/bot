@@ -1,3 +1,4 @@
 [
-  "graphite"
+  "graphite",
+  "worker-herding"
 ]
