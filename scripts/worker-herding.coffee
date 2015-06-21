@@ -18,6 +18,7 @@ fs = require 'fs'
 
 module.exports = (robot) ->
   robot.hear /workers ([\w\.]+) (\w+)/i, (msg) ->
+    msg.send 'Commanding workers'
     commandWorkers(msg.match[1], msg.match[2])
       .spread((stdout, stderr) ->
         if msg.match[2] == 'status'
