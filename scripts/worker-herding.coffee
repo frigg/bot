@@ -8,6 +8,7 @@
 #   PRIVATE_KEY_PATH
 #
 # Commands:
+#   worker-stats <command> - get them stats
 #   workers <host> <command> - run service command on host.
 #
 # Authors:
@@ -15,8 +16,16 @@
 
 ssh = require 'promised-ssh'
 fs = require 'fs'
+request = require 'superagent'
 
 module.exports = (robot) ->
+  robot.respond /worker-stats/i, (msg) ->
+    request.get('https://ci.frigg.io/api/stats')
+      .end (err, res) ->
+        if err
+          msg.send err
+        msg.send JSON.stringify(res.body.stats, null, 2)
+
   robot.respond /workers ([\w\.]+) (\w+)/i, (msg) ->
     msg.send 'Commanding workers'
     commandWorkers(msg.match[1], msg.match[2])

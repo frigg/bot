@@ -18,7 +18,8 @@
     "hubot-scripts": "^2.16.1",
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^3.3.0",
-    "promised-ssh": "^0.4.1"
+    "promised-ssh": "^0.4.1",
+    "superagent": "^1.4.0"
   },
   "engines": {
     "node": "0.10.x"
